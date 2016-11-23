@@ -5,7 +5,7 @@ var mutChance = .25; //chance of mutation
 var s = .3; //max mutation step size as percent of gene domain
 var elitism = .07; //top percent of previous gen to keep
 var threshold = -Infinity;
-var maxGens = 0;
+var maxGens = 3;
 var currentGen = 0;
 var record = [];
 var k;
