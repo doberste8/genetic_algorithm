@@ -1,7 +1,7 @@
-var initialPopSize = 1; //initial population size
-var popSize = 30; //population size
+var initialPopSize = 5; //initial population size
+var popSize = 5; //population size
 var se = .25; //search space area expansion for mating
-var mutChance = .25 //chance of mutation
+var mutChance = .25; //chance of mutation
 var s = .3; //max mutation step size as percent of gene domain
 var elitism = .07; //top percent of previous gen to keep
 var threshold = -Infinity;
@@ -85,7 +85,7 @@ Pop.prototype.sort = function() {
   this.members.sort(function(a, b) {
     return a.fitness < b.fitness ? 1 : -1;
   });
-}
+};
 
 function averageFit(data) {
   var sum = data.reduce(function(sum, value) {
@@ -109,7 +109,7 @@ function out(t) {
   var avgFit = averageFit(t.members);
   var sqrDiffs = t.members.map(function(value) {
     var diff = value.fitness - avgFit;
-    var sqrDiff = diff * diff
+    var sqrDiff = diff * diff;
     return sqrDiff;
   });
   var stdDev = Math.sqrt(average(sqrDiffs));
@@ -123,7 +123,7 @@ function out(t) {
     document.body.innerHTML += ("<li>" + t.members[b].genome[0].value.toFixed(0) + ", " + t.members[b].genome[1].value.toFixed(2) + ", " + t.members[b].genome[2].value.toFixed(2) + ", " + t.members[b].genome[3].value.toFixed(0) + " (" + t.members[b].fitness.toFixed(8) + ")</li>");
   }
   document.body.innerHTML += ("</ul>");
-};
+}
 
 function Test(arr, callback) {
   var t = new Pop(initialPopSize);
@@ -183,7 +183,7 @@ function getData(callback) {
     $.each(data.feed.entry, function(index, value) {
 
       arr.push([value.gsx$time.$t, value.gsx$hometeam.$t, value.gsx$awayteam.$t, parseInt(value.gsx$homescore.$t, 10), parseInt(value.gsx$awayscore.$t, 10)]);
-    })
+    });
     callback(arr, out);
     // console.log(arr);
   });
